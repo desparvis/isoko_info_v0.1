@@ -1,0 +1,81 @@
+{% extends 'dashboard.html' %}
+{% block title %}Add Product - IsokoInfo{% endblock %}
+{% block content %}
+<div class="form-section">
+  <h2>Add New Product</h2>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, msg in messages %}
+          <div class="{{ 'form-success' if category == 'success' else 'form-error' }}">
+            <span>{{ msg }}</span>
+            <span class="close-btn material-icons">close</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  <form method="POST" action="" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="product-name">Product Name</label>
+      <input type="text" id="product-name" name="name" placeholder="e.g., Tomatoes" required>
+    </div>
+    <div class="form-group">
+      <label for="product-price">Price (RWF)</label>
+      <input type="number" id="product-price" name="price" step="0.01" min="0" placeholder="e.g., 1000.00" required>
+    </div>
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select id="category" name="category" required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Grains">Grains</option>
+        <option value="Tubers">Tubers</option>
+        <option value="Legumes">Legumes</option>
+        <option value="Spices">Spices</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="market-location">Market Location</label>
+      <select id="market-location" name="market_id" required>
+        <option value="" disabled selected>Select a market</option>
+        {% for market in markets %}
+          <option value="{{ market.id }}">{{ market.marketplace }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="selling-unit">Selling Unit</label>
+      <select id="selling-unit" name="selling_unit" required>
+        <option value="" disabled selected>Select a unit</option>
+        <option value="kg">kg</option>
+        <option value="by bunch">by bunch</option>
+        <option value="by head">by head</option>
+        <option value="litres">litres</option>
+        <option value="by piece">by piece</option>
+        <option value="by bag">by bag</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="product-image">Product Image</label>
+      <input type="file" id="product-image" name="image" accept="image/*" class="custom-file-input" required>
+    </div>
+    <button type="submit" class="cta-button"><span class="material-icons">add</span>Add Product</button>
+  </form>
+</div>
+<script>
+  // Set Add Product link as active
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === '/addproduct') {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Leave a Review{% endblock %}
+{% block content %}
+<section class="section-cent" style="margin-top: 1px;">
+  <div class="login-container">
+    <h2>Leave a Review</h2>
+    <p>Enter your review code and share your feedback about the product.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="form-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('submitrev') }}" class="login-form">
+      <div class="form-group">
+        <label for="review_code">Review Code</label>
+        <input type="text" id="review_code" name="review_code" placeholder="Enter your code" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Rating</label>
+        <select id="rating" name="rating" required class="filter-input">
+          <option value="" disabled selected>Select rating</option>
+          <option value="5">★★★★★ - Excellent</option>
+          <option value="4">★★★★☆ - Good</option>
+          <option value="3">★★★☆☆ - Okay</option>
+          <option value="2">★★☆☆☆ - Poor</option>
+          <option value="1">★☆☆☆☆ - Bad</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="comment">Your Review</label>
+        <textarea id="comment" name="comment" placeholder="Write something..." rows="5" required style="resize: vertical; padding: 12px 16px; border-radius: 8px; border: 1px solid #dadce0; font-family: 'Roboto', sans-serif;"></textarea>
+      </div>
+
+      <button type="submit" class="cta-button">
+        <span class="material-icons">send</span>Submit Review
+      </button>
+    </form>
+  </div>
+</section>
+{% endblock %}

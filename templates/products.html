@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Products{% endblock %}
+{% block content %}
+<div class="main-content">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, msg in messages %}
+          <div class="{{ 'form-success' if category == 'success' else 'form-error' }}">
+            {{ msg }}
+            <span class="close-btn material-icons">close</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+   <form method="GET" action="{{ url_for('products') }}" class="filter-form">
+    <select name="category" class="filter-input">
+      <option value="">All Categories</option>
+      {% for category in categories %}
+        <option value="{{ category }}" {% if request.args.get('category') == category %}selected{% endif %}>{{ category }}</option>
+      {% endfor %}
+    </select>
+
+    <select name="marketplace" class="filter-input">
+      <option value="">All Marketplaces</option>
+      {% for market in marketplaces %}
+        <option value="{{ market }}" {% if request.args.get('marketplace') == market %}selected{% endif %}>{{ market }}</option>
+      {% endfor %}
+    </select>
+
+    <button type="submit" class="cta-button">
+      <span class="material-icons">filter_alt</span>
+      Filter
+    </button>
+  </form>
+        
+  <div class="product-grid">
+    {% if products %}
+      {% for product in products %}
+        <a href="{{ url_for('product_detail', product_id=product.id) }}" class="product-card-link">
+          <div class="product-card">
+            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-image">
+            <h3>{{ product.name }}</h3>
+            <strong><p>Price: <span class="price-badge">{{ product.price }} RWF</span></p></strong>
+            <p>Unit: {{ product.selling_unit }}</p>
+            <p>Market: {{ product.market.marketplace }}</p>
+            <strong><p>Seller: {{ product.user.name }}</p></strong>
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p>No products yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

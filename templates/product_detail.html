@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{ product.name }} | Product Detail{% endblock %}
+
+{% block content %}
+<div class="product-detail-wrapper">
+  <div class="product-detail-card shadow-lg rounded-2xl">
+    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-detail-image" />
+
+    <div class="product-detail-content">
+      <h2 class="product-title">{{ product.name }}</h2>
+      <div class="product-meta">
+        <p><strong>Price: <span class="price-badge">{{ product.price }} RWF</span></p>
+        <p><strong>Category: </strong> {{ product.category }}</p>
+        <p><strong>Unit: </strong> {{ product.selling_unit }}</p>
+        <p><strong>Market: </strong> {{ product.market.marketplace }}</p>
+        <p><strong>Seller: </strong> {{ product.user.name }}</p>
+        <p><strong>Seller: </strong> {{ product.user.tel }}</p>
+      </div>
+      <a href="/submitrev" class="btn-primary review-button">Leave a Review</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

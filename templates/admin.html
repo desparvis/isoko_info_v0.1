@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel - Register Market</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+
+<body>
+    <div class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for x in messages%}
+                    <p>{{x}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        <div class="title-bar">🧺 Admin - Marketplace Registration</div>
+        <h1>Register Market</h1>
+        <form action="/idkbruh" method="POST">
+            <label for="location">Market Location</label>
+            <input type="text" id="location" name="location" required>
+            <button type="submit">Add Market</button>
+        </form>
+        <div class="footer">© 2025 MarketSys Admin</div>
+    </div>
+</body>
+
+</html>

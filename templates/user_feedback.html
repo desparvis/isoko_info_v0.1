@@ -1,0 +1,18 @@
+{% extends 'dashboard.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+No user feedback yet.
+<script>
+  // active links code
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === '/ufeed') {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}IsokoInfo - Register{% endblock %}
+{% block content %}
+<section class="section login-section">
+  <div class="login-container">
+    <h2>Create Your Seller Account</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, msg in messages %}
+            <div class="{{ 'form-success' if category == 'success' else 'form-error' }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <form class="login-form" method="POST" action="/register">
+      <div class="form-group">
+        <label for="names">Username</label>
+        <input type="text" id="names" name="names" required placeholder="Enter your username" class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="password">Phone Number</label>
+        <input type="tel" id="tel" name="tel" required placeholder="Enter your phone number" class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required minlength="8" placeholder="Enter your password" class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confpass" required placeholder="Confirm your password" class="form-input">
+      </div>
+      <button type="submit" class="cta-button"><span class="material-icons">person_add</span>Sign Up</button>
+      <p class="signup-link">Already have an account? <a href="/login">Login</a></p>
+    </form>
+  </div>
+</section>
+{% endblock %}

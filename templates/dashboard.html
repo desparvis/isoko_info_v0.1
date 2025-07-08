@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-wrapper">
+    <nav class="sidebar">
+      <div>
+        <div class="sidebar-logo">
+          <a href="/dashboard"><span class="material-icons">agriculture</span>IsokoInfo</a>
+        </div>
+        <div class="sidebar-links">
+          <a href="/dashboard"><span class="material-icons">inventory_2</span>Products</a>
+          <a href="/addproduct"><span class="material-icons">add_box</span>Add Product</a>
+          <a href="/ufeed"><span class="material-icons">feedback</span>Customer Feedback</a>
+        </div>
+      </div>
+      <div class="sidebar-links">
+        <a href="/logout" class="special"><span class="material-icons">logout</span>Log Out</a>
+      </div>
+    </nav>
+
+    <nav class="bottom-nav">
+      <div class="nav-links">
+        <a href="/dashboard"><span class="material-icons">inventory_2</span>Products</a>
+        <a href="/addproduct"><span class="material-icons">add_box</span>Add Product</a>
+        <a href="/ufeed"><span class="material-icons">feedback</span>Customer Feedback</a>        
+        <a href="/logout" class="special"><span class="material-icons">logout</span>Log Out</a>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <h1>Hello, {{content}}</h1>
+      {% block content %}
+      {% endblock %}
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

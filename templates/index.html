@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}IsokoInfo - Home{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Welcome to IsokoInfo</h1>
+    <p>Explore our vibrant agricultural marketplace where sellers list fresh produce for fair prices. Start selling today!</p>
+    <a href="/login" class="cta-button"><span class="material-icons"></span>Get Started</a>
+  </section>
+
+  <section class="section">
+    <h2>Why Choose IsokoInfo?</h2>
+    <p>Our platform connects farmers with buyers, offering tools to manage listings and a curated experience to find fresh, local produce.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="material-icons">agriculture</span>
+        <h3>For Sellers</h3>
+        <p>List your fresh produce, manage inventory, and reach buyers across the region with our easy-to-use tools.</p>
+      </div>
+      <div class="feature-card">
+        <span class="material-icons">shopping_cart</span>
+        <h3>For Buyers</h3>
+        <p>Explore a wide range of fresh crops, from fruits to vegetables, and shop directly from local farmers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="material-icons">balance</span>
+        <h3>Fairness and Transparent Trade</h3>
+        <p>Compare transparent product prices from sellers and make informed purchasing decisions with confidence.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Explore Fresh Produce</h2>
+    <p>Discover a variety of agricultural products listed by our trusted farmers. Start browsing now!</p>
+    <a href="/products" class="cta-button"><span class="material-icons">store</span>View Products</a>
+  </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>IsokoInfo is a platform where sellers share price transparent prices of their products in their respective market places. Consumers who use our platform have a choice of comparing different product prices</p>
+  </section>
+{% endblock %}

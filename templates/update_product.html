@@ -1,0 +1,75 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+  <div class="form-section">
+    <h2>Update Product</h2>
+    
+    <form method="POST" enctype="multipart/form-data" class="product-form">
+      <div class="form-group">
+        <label for="name">Product Name</label>
+        <input type="text" name="name" id="name" value="{{ product.name }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price (RWF)</label>
+        <input type="number" step="0.01" name="price" id="price" value="{{ product.price }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
+          <option value="" disabled>Select a category</option>
+          <option value="Vegetables" {% if product.category == 'Vegetables' %}selected{% endif %}>Vegetables</option>
+          <option value="Fruits" {% if product.category == 'Fruits' %}selected{% endif %}>Fruits</option>
+          <option value="Grains" {% if product.category == 'Grains' %}selected{% endif %}>Grains</option>
+          <option value="Tubers" {% if product.category == 'Tubers' %}selected{% endif %}>Tubers</option>
+          <option value="Legumes" {% if product.category == 'Legumes' %}selected{% endif %}>Legumes</option>
+          <option value="Spices" {% if product.category == 'Spices' %}selected{% endif %}>Spices</option>
+          <option value="Other" {% if product.category == 'Other' %}selected{% endif %}>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="market_id">Market Location</label>
+        <select id="market_id" name="market_id" required>
+          <option value="" disabled>Select a market</option>
+          {% for market in markets %}
+            <option value="{{ market.id }}" {% if market.id == product.market_id %}selected{% endif %}>
+              {{ market.marketplace }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="selling_unit">Selling Unit</label>
+        <select id="selling_unit" name="selling_unit" required>
+          <option value="" disabled>Select a unit</option>
+          <option value="kg" {% if product.selling_unit == 'kg' %}selected{% endif %}>kg</option>
+          <option value="by bunch" {% if product.selling_unit == 'by bunch' %}selected{% endif %}>by bunch</option>
+          <option value="by head" {% if product.selling_unit == 'by head' %}selected{% endif %}>by head</option>
+          <option value="litres" {% if product.selling_unit == 'litres' %}selected{% endif %}>litres</option>
+          <option value="by piece" {% if product.selling_unit == 'by piece' %}selected{% endif %}>by piece</option>
+          <option value="by bag" {% if product.selling_unit == 'by bag' %}selected{% endif %}>by bag</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Product Image (upload to replace)</label>
+        {% if product.image %}
+        <div class="current-image">
+          <img src="{{ product.image_url }}" alt="Current product image">
+          <span>Current Image</span>
+        </div>
+        {% endif %}
+        <input type="file" name="image" id="image" class="custom-file-input" accept="image/*">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="cta-button">
+          <span class="material-icons">update</span>
+          Update Product
+        </button>
+      </div>
+    </form>
+  </div>
+{% endblock %}
