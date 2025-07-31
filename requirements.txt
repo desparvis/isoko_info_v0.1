@@ -1,7 +1,10 @@
 Flask==2.3.3
 Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.21
 Werkzeug==2.3.7
 cloudinary==1.36.0
 pymysql==1.1.0
-gunicorn
-python-dotenv
+gunicorn==20.1.0
+python-dotenv==1.0.0
+requests==2.31.0
+certifi==2023.7.22
