@@ -4,3 +4,4 @@ Werkzeug==2.3.7
 cloudinary==1.36.0
 pymysql==1.1.0
 gunicorn
+python-dotenv
