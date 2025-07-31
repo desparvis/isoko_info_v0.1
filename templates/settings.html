@@ -1,0 +1,85 @@
+{% extends 'dashboard.html' %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="form-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+  <div class="settings-container">
+    <div class="settings-card">
+      <h2 class="settings-title">Your Settings</h2>
+      <div class="settings-details">
+        <p><strong>Username:</strong> {{ user.name }}</p>
+        <p><strong>Market Location:</strong> {{ market.marketplace }}</p>
+        <p><strong>Phone Number:</strong> {{ user.tel }}</p>
+      </div>
+      <div class="settings-actions">
+        <a href="{{ url_for('update_settings') }}" class="cta-button">
+          <span class="material-icons">edit</span> Update Settings
+        </a>
+        <button class="cta-button delete-btn" onclick="openModal()">
+          <span class="material-icons">delete</span> Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal">
+    <div class="modal-content">
+      <h3>Confirm Deletion</h3>
+      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button class="cta-button cancel-btn" onclick="closeModal()">Cancel</button>
+        <form id="deleteForm" method="POST" style="display: none;">
+          <input type="hidden" name="delete" value="delete">
+        </form>
+        <button class="cta-button delete-confirm-btn" onclick="submitDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === '/settings') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          this.parentElement.style.opacity = '0';
+          setTimeout(() => this.parentElement.remove(), 300);
+        });
+      });
+    });
+
+    function openModal() {
+      document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    function submitDelete() {
+      const form = document.getElementById('deleteForm');
+      form.submit();
+    }
+
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('confirmModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  </script>
+{% endblock %}

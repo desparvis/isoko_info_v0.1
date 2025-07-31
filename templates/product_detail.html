@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="product-detail-wrapper">
-  <div class="product-detail-card shadow-lg rounded-2xl">
+  <div class="product-detail-card">
     <img src="{{ product.image_url }}" alt="{{ product.name }}" class="product-detail-image" />
 
     <div class="product-detail-content">
@@ -16,7 +16,7 @@
         <p><strong>Seller: </strong> {{ product.user.name }}</p>
         <p><strong>Seller: </strong> {{ product.user.tel }}</p>
       </div>
-      <a href="/submitrev" class="btn-primary review-button">Leave a Review</a>
+      <a href="{{ url_for('review', product_id=product.id) }}" class="btn-primary review-button">Leave a Review</a>
     </div>
   </div>
 </div>

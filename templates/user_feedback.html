@@ -1,18 +1,57 @@
 {% extends 'dashboard.html' %}
 {% block title %}{% endblock %}
 {% block content %}
-No user feedback yet.
-<script>
-  // active links code
-  document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
-    navLinks.forEach(link => {
-      if (link.getAttribute('href') === '/ufeed') {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+  <!-- Display ReviewCode with copy button -->
+  <div class="review-code-section">
+    <h3>Your Review Code</h3>
+    <div class="code-container">
+      <p id="review-code-text">{{ review_code }}</p>
+      <button class="copy-button" onclick="copyToClipboard()">Copy</button>
+    </div>
+    {% if review_code == "No review code available" %}
+      <p>Please add a product to generate a review code.</p>
+    {% endif %}
+  </div>
+
+  <h3>User Feedback</h3>
+  <div class="review-cards-container">
+    {% for review in reviews %}
+      <div class="review-card">
+        <p><strong>Product:</strong> {{ review.product.name }}</p>
+        <p class="rating"><strong>Rating:</strong> {{ review.rating }} / 5</p>
+        <p><strong>Comment:</strong> {{ review.comment }}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === '/ufeed') {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
     });
-  });
-</script>
+
+    function copyToClipboard() {
+      const codeText = document.getElementById('review-code-text').textContent;
+      if (codeText !== "No review code available") {
+        navigator.clipboard.writeText(codeText).then(() => {
+          const button = document.querySelector('.copy-button');
+          const originalText = button.textContent;
+          button.textContent = 'Copied!';
+          button.classList.add('copied');
+          setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+          }, 2000); // Revert after 2 seconds
+        }).catch(err => {
+          alert('Failed to copy: ' + err);
+        });
+      }
+    }
+  </script>
 {% endblock %}

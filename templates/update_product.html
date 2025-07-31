@@ -27,19 +27,6 @@
           <option value="Other" {% if product.category == 'Other' %}selected{% endif %}>Other</option>
         </select>
       </div>
-
-      <div class="form-group">
-        <label for="market_id">Market Location</label>
-        <select id="market_id" name="market_id" required>
-          <option value="" disabled>Select a market</option>
-          {% for market in markets %}
-            <option value="{{ market.id }}" {% if market.id == product.market_id %}selected{% endif %}>
-              {{ market.marketplace }}
-            </option>
-          {% endfor %}
-        </select>
-      </div>
-
       <div class="form-group">
         <label for="selling_unit">Selling Unit</label>
         <select id="selling_unit" name="selling_unit" required>

@@ -38,15 +38,6 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="market-location">Market Location</label>
-      <select id="market-location" name="market_id" required>
-        <option value="" disabled selected>Select a market</option>
-        {% for market in markets %}
-          <option value="{{ market.id }}">{{ market.marketplace }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="form-group">
       <label for="selling-unit">Selling Unit</label>
       <select id="selling-unit" name="selling_unit" required>
         <option value="" disabled selected>Select a unit</option>
@@ -66,7 +57,6 @@
   </form>
 </div>
 <script>
-  // Set Add Product link as active
   document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.sidebar-links a, .bottom-nav .nav-links a');
     navLinks.forEach(link => {

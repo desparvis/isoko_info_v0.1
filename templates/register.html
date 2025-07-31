@@ -19,6 +19,15 @@
         <input type="text" id="names" name="names" required placeholder="Enter your username" class="form-input">
       </div>
       <div class="form-group">
+        <label for="names">Market</label>
+        <select id="market-location" name="market_id" class="form-control" required>
+          <option value="" disabled selected>Select a market</option>
+          {% for market in markets %}
+            <option value="{{ market.id }}">{{ market.marketplace }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
         <label for="password">Phone Number</label>
         <input type="tel" id="tel" name="tel" required placeholder="Enter your phone number" class="form-input">
       </div>

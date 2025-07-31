@@ -16,7 +16,9 @@
       {% endif %}
     {% endwith %}
 
-    <form method="POST" action="{{ url_for('submitrev') }}" class="login-form">
+    <form method="POST" action="{{ url_for('submitrev', product_id=product.id) }}" class="login-form">
+      <input type="hidden" name="product_id" value="{{ product.id }}">
+      
       <div class="form-group">
         <label for="review_code">Review Code</label>
         <input type="text" id="review_code" name="review_code" placeholder="Enter your code" required>
