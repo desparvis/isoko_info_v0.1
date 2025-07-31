@@ -57,7 +57,7 @@ pip install -r requirements.txt
 
 Make a .env file in the root directory and then fill it up with this content
 
-SECRET_KEY=7d05da793ae5b5ffdf93ab3b85304ee2
+SECRET_KEY='your_app_secret_key'
 DATABASE_URL=mysql+mysqlconnector://'avnadmin':'password'@'hostname'/'database_name'?charset=utf8mb4
 
 CLOUDINARY_CLOUD_NAME='your_cloudinary_name'
