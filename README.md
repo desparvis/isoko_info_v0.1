@@ -105,6 +105,6 @@ You will have to wait for the process of building and deploying to finish. When 
 
 ## Author
 
-**Credo Desparvis Gutabarwa**
+**Credo Desparvis Gutabarwa**,
 Github: https://github.com/desparvis
 
