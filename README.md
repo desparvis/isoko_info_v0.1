@@ -38,7 +38,7 @@ Follow theses steps **carefully** to run this project locally
 ### 1. Clone the repository
 
 Open terminal(bash, cmd, powershell)
-git clone https://github.com/your-username/isoko_info_v0.1.git
+git clone https://github.com/your-username/isoko_info_v0.1.git,
 cd isoko_info_v0.1
 
 ### 2. Install Python
