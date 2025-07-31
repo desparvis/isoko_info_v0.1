@@ -66,7 +66,7 @@ CLOUDINARY_API_SECRET='your_app_secret_key'
 
 You need to actually register on Aiven to get a database and it's connection information that you need to replace in the placeholding values above.
 
-You also need to register on cloudinary to get all the connection information you need to actually upload the images that are going to be needed wehn running this web application and replace them with the placeholding values.
+You also need to register on cloudinary to get all the connection information you need to actually upload the images that are going to be needed when running this web application and replace them with the placeholding values.
 
 ## Deployment on Render
 
