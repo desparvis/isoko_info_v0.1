@@ -1,0 +1,28 @@
+# Compiled Python files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Secret environment variables
+.env
+
+# Log files
+*.log
+
+# Uploaded images or files (if you store any locally)
+uploads/
+static/uploads/
+
+# Database files (in case you use SQLite locally for testing)
+*.sqlite3
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+# Windows system files
+Thumbs.db
+desktop.ini
+
+# macOS system files (in case you zip/move code between systems)
+.DS_Store
